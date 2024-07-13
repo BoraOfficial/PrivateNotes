@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Notes - Viewer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='icon.png') }}">
+    <script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
+</head>
+
+<body>
+  <style>
+    .vertical-line {
+border-left: 1px solid #9a9c9f;
+height: 35px;
+margin: 0px 20px;
+}
+
+
+@media screen and (max-width: 768px) {
+.vertical-line {
+    visibility: hidden; /* Adjust padding for smaller screens */
+    display: none;
+}
+}
+</style>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+        <div class="container-fluid">
+          <img src="{{ url_for('static', filename='icon.png') }}" style="width: 35px; aspect-ratio: 1 / 1; height: 35px;">
+          <br>
+
+          <a class="navbar-brand" href="#">Private Notes</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="vertical-line"></div>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/">Home</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="/faq">FAQ</a>
+              </li>
+            </ul>
+            <span class="navbar-text">
+              Private notes, made easy
+            </span>
+          </div>
+        </div>
+      </nav>
+      <div class="container" style="margin-top: -6rem;">
+        <div class="row justify-content-center align-items-center vh-100">
+          <div class="col-sm-6">
+            <h1>Private Note Viewer</h1>
+            <br>
+            <br>
+            <textarea disabled="true" style="resize: none;width: 100%; height: 7rem; border: var(--bs-border-width) solid var(--bs-border-color); border-radius: var(--bs-border-radius); padding: 0.375rem 0.75rem;"
+            id="result" rows="4" cols="50" placeholder="Once the correct password is inputted, note will appear here." readonly></textarea><br><br>
+            <input type="password" id="password" style="width: 100%;border: var(--bs-border-width) solid var(--bs-border-color);border-radius: var(--bs-border-radius);height: 2.4rem;padding: 0.375rem 0.75rem;" placeholder="Encryption Password(Optional)">
+           <button data-bs-toggle="modal" data-bs-target="#bs-modal" class="btn btn-dark" style="font-family: Thicccboi, sans-serif;
+                           transition: transform 0.2s ease-in-out;
+                           text-align: center;
+                           height: 3.3rem;
+                           width: 12rem;
+                           margin-top: 2rem;"
+                           onclick="decryptAndView()">
+           View Note
+         </button>
+          </div>
+        </div>
+      </div>
+
+    <input id="salt" type="hidden" value="{{ salt }}">
+    <input id="iv" type="hidden" value="{{ iv }}">
+    <input id="encrypted" type="hidden" value="{{ content }}">
+
+    <script src="{{ url_for('static', filename='e2e-decryptor.js') }}"></script>
+</body>
+
+</html>

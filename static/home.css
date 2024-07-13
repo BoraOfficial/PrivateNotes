@@ -1,0 +1,36 @@
+@keyframes appear {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+html {
+    background-color: #fafafa;
+    overflow-x: hidden !important;
+}
+
+body {
+    opacity: 0;
+    animation: appear 1s forwards;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden !important;
+}
+
+.vertical-line {
+    border-left: 1px solid #9a9c9f;
+    height: 35px;
+    margin: 0px 20px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .vertical-line {
+        visibility: hidden; /* Adjust padding for smaller screens */
+        display: none;
+    }
+}

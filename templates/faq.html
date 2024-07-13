@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Notes - FAQ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='icon.png') }}">
+    <script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
+</head>
+
+<body>
+    <style>
+        .vertical-line {
+    border-left: 1px solid #9a9c9f;
+    height: 35px;
+    margin: 0px 20px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .vertical-line {
+        visibility: hidden; /* Adjust padding for smaller screens */
+        display: none;
+    }
+}
+    </style>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <img src="{{ url_for('static', filename='icon.png') }}"
+                style="width: 35px; aspect-ratio: 1 / 1; height: 35px;">
+            <br>
+            <a class="navbar-brand" href="#">Private Notes</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="vertical-line"></div>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/faq">FAQ</a>
+                    </li>
+                </ul>
+                <span class="navbar-text">
+                    Private notes, made easy
+                </span>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <div class="container" style="margin-top: -6rem;">
+        <div class="row justify-content-center align-items-center vh-100">
+            <div class="col-sm-6">
+                <br>
+                <h1 style="margin-top: 6rem;">Frequently Asked Questions</h1><br><br>
+                <ul>
+                    <li><strong>How can I trust you?</strong><br>Well, you can't really. We can promise that we are deleting every single note after its viewed, but we cannot prove that. You can verify yourself that the app uses end-to-end encrpytion by inspecting the client side JavaScript.</li>
+                    <li><strong>I don't want to set a password.</strong><br>You don't have to! Whilst its strongly recommended to set a password, its fully optional. You can leave the password blank if you don't want to set a password.</li>
+                    <li><strong>Are my notes secure?</strong><br>Yes. We use a military-grade encryption algorithm. The encryption is done in the client-side, if you want to you can access the code to verify it yourself.</li>
+                    <li><strong>Do you track or sell my personal information?</strong><br>No. We can't even access your notes in plaintext.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
