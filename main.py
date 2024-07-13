@@ -117,4 +117,4 @@ def not_found_error(error):
 CORS(app, origins=['http://localhost:5000', 'http://127.0.0.1:5000'])
 
 if __name__ == '__main__':
-    app.run(debug=True) #host='0.0.0.0',port=int(os.environ.get('PORT', 8080))
+    app.run(debug=False,host='0.0.0.0',port=int(os.environ.get('PORT', 8080))) #host='0.0.0.0',port=int(os.environ.get('PORT', 8080))
