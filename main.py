@@ -29,19 +29,14 @@ conn.commit()
 
 app.secret_key = os.urandom(24) 
 
-
 def primary_key_exists(key):
-    cursor.execute("""
-        SELECT id FROM notes
-    """)
-    
-    result = cursor.fetchone()
 
-    if result == key:
-         return True
+  cursor.execute('SELECT EXISTS(SELECT 1 FROM notes WHERE id = ?)', (key,)) #prevent SQL injection
+  result = cursor.fetchone()[0]
 
-    
-    return False
+  return result == 1
+
+
 
 
 def get_note(cursor, note_uuid):
