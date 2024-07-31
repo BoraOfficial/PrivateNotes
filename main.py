@@ -22,12 +22,13 @@ conn.execute('''CREATE TABLE IF NOT EXISTS notes (
                   id TEXT PRIMARY KEY,
                   content TEXT,
                   salt TEXT,
-                  iv TEXT  
+                  iv TEXT
                )''')
 
 conn.commit()
 
-app.secret_key = os.urandom(24) 
+app.secret_key = os.urandom(24)
+
 
 def primary_key_exists(key):
 
@@ -35,7 +36,6 @@ def primary_key_exists(key):
   result = cursor.fetchone()[0]
 
   return result == 1
-
 
 
 
@@ -62,13 +62,13 @@ def add_note(content, salt, iv):
         uuid = generate_random_text(16)
         if not primary_key_exists(uuid):
             break
-        
+
    print(uuid)
 
    params = (uuid, content, salt, iv)
-    
+
    cursor.execute("INSERT INTO notes (id, content, salt, iv) VALUES (?, ?, ?, ?)", params)
-     
+
    conn.commit()
 
    return uuid
@@ -77,6 +77,9 @@ def add_note(content, salt, iv):
 def home():
 	return render_template('index.html')
 
+@app.route('/robots.txt')
+def robots_txt():
+    return render_template('robots.txt')
 
 @app.route('/add_note', methods=['POST'])
 def add_note_endpoint():
@@ -109,7 +112,7 @@ def faq():
 def not_found_error(error):
     return render_template('404.html'), 404
 
-CORS(app, origins=['http://localhost:5000', 'http://127.0.0.1:5000'])
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 if __name__ == '__main__':
-    app.run(debug=False,host='0.0.0.0',port=int(os.environ.get('PORT', 8080))) #host='0.0.0.0',port=int(os.environ.get('PORT', 8080))
+    app.run(debug=False) #host='0.0.0.0',port=int(os.environ.get('PORT', 8080))
