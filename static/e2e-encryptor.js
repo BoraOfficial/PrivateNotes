@@ -91,13 +91,16 @@ async function encryptAndSend() {
     }
 }
 
+function getCSRFToken() {
+    return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+}
 
 function sendFetch(content) {
     fetch('/add_note', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            // Add any other headers as needed
+            'X-CSRFToken': getCSRFToken()
         },
         body: JSON.stringify({
             content: btoa(content), // encrypt array with base64 so sql can understand
