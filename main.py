@@ -4,6 +4,7 @@ import os
 from flask_cors import CORS
 import string
 import random
+from flask_wtf.csrf import CSRFProtect
 
 def generate_random_text(length):
     characters = string.ascii_letters + string.digits
@@ -28,6 +29,7 @@ conn.execute('''CREATE TABLE IF NOT EXISTS notes (
 conn.commit()
 
 app.secret_key = os.urandom(24)
+csrf = CSRFProtect(app)
 
 
 def primary_key_exists(key):
