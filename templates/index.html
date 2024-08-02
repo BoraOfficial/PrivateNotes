@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='icon.png') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
 </head>
 
