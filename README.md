@@ -1,4 +1,4 @@
-# <img src="https://raw.githubusercontent.com/BoraOfficial/PrivateNotes/main/static/icon.png" width="20" height="20" alt="icon"> PrivateNotes
+# <img src="https://raw.githubusercontent.com/BoraOfficial/PrivateNotes/main/static/icon.png" width="30" height="30" alt="icon"> PrivateNotes
 
 A fully responsive Python Flask web app for sending and receiving private notes with military-grade end-to-end encryption.
 
